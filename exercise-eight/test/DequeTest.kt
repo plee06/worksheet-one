@@ -1,6 +1,6 @@
 import org.junit.Before
 import org.junit.Ignore
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 class DequeTest {
