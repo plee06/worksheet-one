@@ -8,19 +8,18 @@
 
 object PrimeFactorCalculator {
 
-    fun primeFactors(int: Int): List<Int>
+    fun primeFactors(long: Long): List<Long>
     {
         // First we find all the possible factors of the number
         // Remember that the Kotlin for loop is inclusive of the last number
-        var ml: MutableList<Int> = mutableListOf<Int>()
-        var temp: Int = int
+        var ml: MutableList<Long> = mutableListOf<Long>()
+        var temp: Long = long
 
-        for (i in 2..int)
+        for (i in 2..long)
         {
             // Check if the current number is a factor and if it is a prime
-            if (int % i == 0)
+            if (long % i == 0L)
             {
-                println(i)
                 if (checkPrime(i))
                 {
                     // If we find a number that is both a possible factor and a prime number begin to divide into it
@@ -43,11 +42,11 @@ object PrimeFactorCalculator {
      * Otherwise, return true, it is prime!
      *
      * */
-    fun checkPrime(int: Int): Boolean
+    fun checkPrime(long: Long): Boolean
     {
-        for (i in 2..int - 1)
+        for (i in 2..long - 1)
         {
-            if (int % i == 0)
+            if (long % i == 0L)
             {
                 return false;
             }
@@ -56,9 +55,9 @@ object PrimeFactorCalculator {
         return true;
     }
 
-    fun checkDivisibility(temp: Int, factor: Int): Boolean
+    fun checkDivisibility(temp: Long, factor: Long): Boolean
     {
-        while (temp % factor == 0)
+        while (temp % factor == 0L)
         {
             return true;
         }
@@ -66,16 +65,5 @@ object PrimeFactorCalculator {
         return false;
     }
 
-
-    fun primeFactors(long: Long): List<Long> {
-        // TODO
-        return listOf<Long>()
-    }
 }
 
-
-fun main(args: Array<String>)
-{
-    println(PrimeFactorCalculator.primeFactors(60))
-    println(2 * 2 * 3 * 5)
-}

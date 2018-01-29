@@ -17,13 +17,14 @@
 object Hexadecimal {
 
     fun toDecimal(s: String): Int {
-        val literals: List<Char> = s.toCharArray().reversed()
+        val literals: List<Char> = s.toLowerCase().toCharArray().reversed()
         val hexaValues: Map<String, Int> = mapOf("a" to 10, "b" to 11, "c" to 12, "d" to 13, "e" to 14, "f" to 15)
         val base: Double = 16.0
         var currPower: Double = 0.0
         var res: Int = 0
         var currValue: Int = 0
         var hexaValueToDecimal: Int = 0
+
 
         for (eachPosition in literals)
         {
@@ -46,11 +47,4 @@ object Hexadecimal {
     }
 
 
-}
-
-
-fun main(args: Array<String>)
-{
-
-    println(Hexadecimal.toDecimal("10af8c"))
 }

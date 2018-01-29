@@ -14,17 +14,26 @@ object WordCount {
     fun phrase(phrase: String): Map<String, Int> {
 
         /*
-        * Take the phrase
-        * .and make it Lower Case
-        * .then
+        * Counts words when one of each
+        * Counts one word
+        * Counts case insensitively
+        * Counts multiple occurences
+        *
+        *
         * */
-
+        /*
+        * Split up the phrase into all lowercase Strings
+        * */
         var p: List<String> = phrase
                 .toLowerCase()
+                .replace(",\n", " ")
                 .split(" ")
-        var m: MutableMap<String, Int> = mutableMapOf()
 
         println(p)
+        /*
+        * Initialize and declare a mutable map of types String and Int
+        * */
+        var m: MutableMap<String, Int> = mutableMapOf()
 
         for (word in p)
         {
@@ -37,7 +46,6 @@ object WordCount {
             {
                 m[word] = 1
             }
-
         }
 
         return m

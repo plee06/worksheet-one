@@ -48,7 +48,7 @@ class Anagram(private val word: String) {
             if (!(words.toLowerCase().toCharArray().sorted() == word.toLowerCase().toCharArray().sorted())) ms.remove(words)
         }
 
-        return ms 
+        return ms
 
     }
 }
