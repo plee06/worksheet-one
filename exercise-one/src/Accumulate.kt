@@ -15,40 +15,24 @@ object Accumulate {
 
 
     fun <T, R> accumulate(collection: List<T>, function: (T) -> R): List<R> {
-        // TODO
-        return listOf<R>()
-    }
 
-    /*
-    * Test Hello World in Kotlin
-    *
-    * */
-    fun sayHello()
-    {
-        println("Hello World!")
-    }
-    /*
-    * Squares a number in a collection
-    * Takes in a parameter of an int, squares it and returns the square of type Int
-    * */
-    fun squared(a: Int): Int
-    {
-        return a * a
-    }
-}
+        // Create a variable called "res" of type MutableList<R> taking in a Generic type of R.
+        // Initialize an empty mutable list with mutableListOf() ...
+        var res: MutableList<R> = mutableListOf()
 
-fun main(args: Array<String>)
-{
-    // Collection of numbers to be used for accumulate
-    val numbers: MutableList<Int> = mutableListOf(1,2,3,4,5)
-    val newNumbers: MutableList<Int> = mutableListOf<Int>() // Empty MutableList of type Int
+        /*
+        * Iterate through every item in the passed in collection of List<T>
+        *     and then run the function passed in on that specific item and add the result to the
+        *     mutableList!
+        * */
+        for (item in collection)
+        {
+            res.add(function(item))
+        }
 
-    for (everyNumber in numbers)
-    {
-        newNumbers.add(Accumulate.squared(everyNumber))
+
+        // Finally, return the list 
+        return res.toList()
     }
-
-    println(numbers)
-    println(newNumbers)
 
 }
