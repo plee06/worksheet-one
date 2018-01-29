@@ -13,7 +13,26 @@ object WordCount {
     * */
     fun phrase(phrase: String): Map<String, Int> {
 
-        return phrase.split(" ").groupingBy{ it.toLowerCase() }.eachCount()
+        /*
+        * Take the phrase
+        * .and make it Lower Case
+        * .then
+        * */
+
+        var p: List<String> = phrase.toLowerCase().split(" ")
+        var m: MutableMap<String, Int> = mutableMapOf()
+
+        println(p)
+
+        for (word in p)
+        {
+            if (m.containsKey(word)) m.getValue(word) + 1 else m[word] = 1
+
+        }
+
+        return m
+        
+
     }
 
 
