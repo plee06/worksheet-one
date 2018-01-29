@@ -2,6 +2,8 @@
  * Given a word and a list of possible anagrams (a word that contains all characters of the passed in word)
  * return a list of the anagrams.
  *
+ * An anagram is word formed by the rearranging of another word. i.e. spar == rasp.
+ *
  * */
 
 
@@ -14,52 +16,39 @@ class Anagram(private val word: String) {
      *
      * */
 
-    init { println("Constructing this object ... ") }
-
     fun match(anagrams: Collection<String>): Set<String> {
-        val toChar: CharArray = word.toCharArray()
-        val check: MutableList<Char> = mutableListOf<Char>()
-        val literals: MutableSet<String> = mutableSetOf<String>()
 
-        for (eachChar in toChar)
+        /*
+        * Filter the collection of passed in possible anagrams by length. If the length of the two do not match
+        * filter it out, it's not a possible anagram.
+        *
+        * We then look through the returned list and check if the word itself in our anagrams list is equal
+        * to the word, if it is keep it in.
+        *
+        * Next we again filter the returned list by taking each word and turning it into a character array and sorting it
+        * ; same with the passed in word and comparing the two. Only if they are equal it should be returned.
+        *
+        * Finally, turn that to a set and return it.
+        *
+        * */
+
+        var ms: MutableSet<String>  = mutableSetOf()
+
+
+        for (words in anagrams)
         {
-            check.add(eachChar)
+            // First filter based on length, is it the same length? If it is, it's a possible Anagram
+            if (words.length == word.length ) ms.add(words)
+
+            // Next filter out all words in the anagram that are exact duplicates, i.e. remove them from the set
+            if (words.toLowerCase().equals(word.toLowerCase())) ms.remove(words)
+
+            // Next convert all the words to a sorted character array and check if they are anagrams, i.e. they
+            // all have the same characters! If no match, remove it from the set
+            if (!(words.toLowerCase().toCharArray().sorted() == word.toLowerCase().toCharArray().sorted())) ms.remove(words)
         }
 
-        val c: List<Char> = check.sorted()
+        return ms 
 
-        for (eachWord in anagrams)
-        {
-            var charsToCheck: List<Char> = eachWord.toCharArray().sorted()
-
-            println(c)
-            println(charsToCheck)
-
-            if (c == charsToCheck)
-            {
-                literals.add(eachWord)
-            }
-        }
-
-        return literals
     }
-}
-
-/*
-* The function should check all the characters in the word and then check each anagram in the collection
-* to see if all characters in exist in that String. If it does, add it to the list, if not, skip over it -- it's
-* not an Anagram!
-*
-*
-* */
-
-fun main(args: Array<String>)
-{
-    // Declaration and initialization of Anagram with the word "listen" passed in
-    val ana: Anagram = Anagram("listen")
-    val anagrams: List<String> = listOf("enlists", "google", "inlets", "banana")
-
-    println(ana.match(anagrams))
-
-
 }

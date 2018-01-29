@@ -57,9 +57,3 @@ object SumOfMultiples {
 
 
 }
-
-fun main(args: Array<String>)
-{
-
-    println(SumOfMultiples.sum(setOf(3,5),20))
-}

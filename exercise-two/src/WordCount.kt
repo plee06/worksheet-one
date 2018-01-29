@@ -19,19 +19,29 @@ object WordCount {
         * .then
         * */
 
-        var p: List<String> = phrase.toLowerCase().split(" ")
+        var p: List<String> = phrase
+                .toLowerCase()
+                .split(" ")
         var m: MutableMap<String, Int> = mutableMapOf()
 
         println(p)
 
         for (word in p)
         {
-            if (m.containsKey(word)) m.getValue(word) + 1 else m[word] = 1
+
+            if (m.containsKey(word))
+            {
+                m.put(word, m.getValue(word) + 1)
+            }
+            else
+            {
+                m[word] = 1
+            }
 
         }
 
         return m
-        
+
 
     }
 
