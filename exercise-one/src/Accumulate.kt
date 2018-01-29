@@ -31,7 +31,7 @@ object Accumulate {
         }
 
 
-        // Finally, return the list 
+        // Finally, return the list
         return res.toList()
     }
 
